@@ -71,9 +71,9 @@
 
           <div class="label-container">
 
-          <label for="name">Name</label>
+            <label for="name">Name</label>
 
-          <span class="error" id="nameError"></span>
+            <span class="error" id="nameError"></span>
 
           </div>
 
@@ -82,26 +82,26 @@
           <div class="label-container">
 
 
-          <label for="email">Email Address</label>
+            <label for="email">Email Address</label>
 
-          <span id="emailError" class="error"></span>
+            <span id="emailError" class="error"></span>
 
           </div>
 
 
-          <input class="info" placeholder="e.g. stephenking@lorem.com" type="email" id="email"  name="name"><br>
+          <input class="info" placeholder="e.g. stephenking@lorem.com" type="email" id="email" name="name"><br>
 
           <div class="label-container">
 
 
-          <label for="phone">Phone Number</label>
+            <label for="phone">Phone Number</label>
 
-          <span class="error" id="phoneError"></span>
+            <span class="error" id="phoneError"></span>
 
           </div>
 
 
-          <input class="info" placeholder="e.g. + 1 234 567 890" type="text" id="phone"  name="name">
+          <input class="info" placeholder="e.g. + 1 234 567 890" type="text" id="phone" name="name">
         </form>
 
 
@@ -124,7 +124,7 @@
 
         <div class="billing-option-container">
 
-          <button class="billing-option" type="button" autofocus> 
+          <button class="billing-option" type="button" autofocus>
             <img class="billing-icon" src="./assets/images/icon-arcade.svg">
 
             <div class="span-container">
@@ -188,7 +188,7 @@
 
         <div class="add-on-wrapper">
 
-          <label  class="add-on-container">
+          <label class="add-on-container">
 
             <input id="service-add-on" class="add-on-option" type="checkbox">
 
@@ -217,7 +217,7 @@
 
             </div>
 
-            <span class="price-2">+$2/mo</span>
+            <span id="storage2" class="price-2">+$2/mo</span>
 
 
 
@@ -275,48 +275,48 @@
 
             <div id="finishing-span-container" class="span-container">
 
-              <span class="choice">test</span>
-              <span id="underline" onclick="nextPrev(-2)">Change</span>
+              <span class="choice">Unspecified</span>
+              <span id="underline">Change</span>
 
 
             </div>
 
             <span id="price-choice" class="choice">$9/mo</span>
-            
-
-          </div>
-
-          <div class="add-on-mask">
-
-          <div id="child-1" class="finishing-child">
-
-            <span class="left">Online Service</span>
-
-            <span id="yearly-add-on" class="price">+$1/mo</span>
 
 
           </div>
 
-          <div id="child-2" class="finishing-child">
+          <div id="test-append" class="add-on-mask">
 
-            <span class="left">Larger Storage</span>
+            <div id="child-1" class="finishing-child">
 
-            <span id="yearly-storage" class="price-2">+$2/mo</span>
+              <span class="left">Online Service</span>
+
+              <span id="yearly-add-on" class="price">+$1/mo</span>
+
+
+            </div>
+
+            <div id="child-2" class="finishing-child">
+
+              <span class="left">Larger Storage</span>
+
+              <span id="yearly-storage" class="price">+$2/mo</span>
+
+
+            </div>
+
+            <div id="child-3" class="finishing-child">
+
+              <span class="left">Customizable Profile</span>
+
+              <span id="yearly-custom" class="price">+$2/mo</span>
+
+
+            </div>
 
 
           </div>
-
-          <div id="child-3" class="finishing-child">
-
-            <span class="left">Customizable Profile</span>
-
-            <span id="yearly-custom" class="price-2">+$2/mo</span>
-
-
-          </div>
-
-
-</div>
 
 
 
@@ -324,9 +324,9 @@
 
         <div class="total-container">
 
-          <span class="left">Total (per month)</span>
+          <span id="total-text" class="left">Total (per month)</span>
 
-          <span class='bold'></span>
+          <span id="total-amount" class='bold'></span>
 
         </div>
 
@@ -356,9 +356,9 @@
 
     <div id="navigation" class="bottom-tab">
 
-      <button type="button" class="submit-btn" id="prev" onclick="nextPrev(-1)">Go Back</button>
+      <button type="button" class="submit-btn" id="prev">Go Back</button>
 
-      <button type="button" class="submit-btn" id="next" onclick="nextPrev(1)">Next Step</button>
+      <button type="button" class="submit-btn" id="next">Next Step</button>
 
     </div>
 

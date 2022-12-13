@@ -416,14 +416,14 @@ form span {
 
     padding-bottom: 9px;
     padding-top: 9px;
-    display: none;
+    display: flex;
 }
 
-.addOns {
+/* .addOns {
 
     display: flex !important;
     
-}
+} */
 
 #finishing-span-container {
 
@@ -456,7 +456,10 @@ form span {
     justify-content: space-between;
     padding: 30px 17px 10px 17px;
     align-items: center;
+   
 }
+
+
 
 .price, #yearly-custom, #yearly-storage {
 
