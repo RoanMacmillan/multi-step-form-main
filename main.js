@@ -71,21 +71,21 @@ function validateForm() {
     phoneInput = document.getElementById('phone');
     emailInput = document.getElementById('email');
 
-    if (nameInput.value === '') {
+    if (nameInput.value !== '') {
 
         nameInput.classList.add('invalid');
         document.getElementById('nameError').innerHTML = 'This field is required'
 
         valid = false;
 
-    } if (emailInput.value === '' || validateEmail(emailInput.value)) {
+    } if (emailInput.value !== '' || validateEmail(emailInput.value)) {
 
         emailInput.classList.add('invalid');
         document.getElementById('emailError').innerHTML = 'Not a valid email';
 
         valid = false;
 
-    } if (phoneInput.value === '') {
+    } if (phoneInput.value !== '') {
 
         phoneInput.classList.add('invalid');
         document.getElementById('phoneError').innerHTML = 'Not a valid phone number'
@@ -162,6 +162,32 @@ planBtn.forEach((btn) => {
 })
 
 
+// fixes summary ammounts if they are active when user toggles
+
+function fixError() {
+
+const choice = document.querySelector('.choice');
+
+ if (choice.innerHTML === 'Arcade') {
+
+     priceChoice.innerHTML = arcade.innerHTML;
+ }
+
+ if (choice.innerHTML === 'Advanced') {
+
+    priceChoice.innerHTML = advanced.innerHTML;
+
+ }
+
+ if (choice.innerHTML === 'Pro') {
+
+    priceChoice.innerHTML = pro.innerHTML;
+
+ }
+
+}
+
+
 const toggleBtn = document.getElementById('toggle-btn');
 const yearlyStorage = document.getElementById('yearly-storage');
 const yearlyCustom = document.getElementById('yearly-custom');
@@ -172,117 +198,172 @@ const advanced = document.getElementById('advanced-price');
 const yearly = document.getElementById('yearly-add-on');
 const online = document.getElementById('online-price');
 const storage2 = document.getElementById('storage2');
+const priceChoice = document.getElementById('price-choice');
 
-toggleBtn.addEventListener('change', () => {
+toggleBtn.addEventListener('click', () => {
+
+   
 
     document.getElementById('yearlyText').classList.toggle('text');
     document.getElementById('monthlyText').classList.toggle('gray');
 
-
     if (toggleBtn.checked) {
+        
 
         arcade.innerHTML = '$90/yr';
         advanced.innerHTML = '$120/yr'
         pro.innerHTML = '$150/yr';
-        yearly.innerHTML = '+$10/yr';
         online.innerHTML = '+$10/yr';
-        yearlyCustom.innerHTML = '+$20/yr';
-        yearlyStorage.innerHTML = '+$20/yr';
         yearlyCustom2.innerHTML = '+$20/yr';
         storage2.innerHTML = '+$20/yr';
 
+        if (childOne.classList.contains('flex')){
+
+            yearly.innerHTML = '+$10/yr';
+
+        } else {
+
+            yearly.innerHTML = '+$0/yr'
+        }
+    
+
+        if (childTwo.classList.contains('flex')){
+
+            yearlyStorage.innerHTML = '+$20/yr';
+
+        } else {
+
+            yearlyStorage.innerHTML = '+$0/yr'
+        }
+
+        if (childThree.classList.contains('flex')){
+
+            yearlyCustom.innerHTML = '+$20/yr';
+
+        } else {
+
+            yearlyCustom.innerHTML = '+$0/yr';
+        }
+
+                // summary add ons //
+
     } else {
 
-        yearlyCustom2.innerHTML = '$2/mo';
+
         arcade.innerHTML = '$9/mo';
         advanced.innerHTML = '$12/mo'
         pro.innerHTML = '$15/mo';
-        yearly.innerHTML = '+$1/mo';
         online.innerHTML = '+$1/mo';
-        yearlyCustom.innerHTML = '+$2/mo';
-        yearlyStorage.innerHTML = '+$2/mo';
+        yearlyCustom2.innerHTML = '+$2/mo';
         storage2.innerHTML = '+$2/mo';
 
 
+        if (childOne.classList.contains('flex')){
+
+            yearly.innerHTML = '+$1/mo';
+
+        } else {
+
+            yearly.innerHTML = '+$0/mo'
+        }
+        
+        if (childTwo.classList.contains('flex')){
+
+            yearlyStorage.innerHTML = '+$2/mo';
+
+        } else {
+
+            yearlyStorage.innerHTML = '+$0/mo'
+        }
+
+        if (childThree.classList.contains('flex')){
+
+            yearlyCustom.innerHTML = '+$2/mo';
+
+        } else {
+
+            yearlyCustom.innerHTML = '+$0/mo';
+        }
+
+        // summary add ons //
+
+    }
+
+    fixError();
+
+})
+
+const serviceAddOn = document.getElementById('service-add-on');
+const containerTest = document.getElementById('test-append');
+
+const childOne = document.getElementById('child-1');
+
+serviceAddOn.addEventListener('change', () => {
+
+    const yearlyService = document.getElementById('yearly-add-on');
+
+    // const onlineService = document.getElementById('online-price');
+
+    if (serviceAddOn.checked) {
+
+       childOne.classList.add('flex');
+       yearlyService.innerHTML = online.innerHTML;
+
+
+    } else {
+
+        childOne.classList.remove('flex');
+        yearlyService.innerHTML = '+$0/m';
 
     }
 
 })
 
-// const serviceAddOn = document.getElementById('service-add-on');
-// let addOnItem = document.createElement('div');
-// const containerTest = document.getElementById('test-append');
+const childTwo = document.getElementById('child-2');
+const storageAddOn = document.getElementById('storage-add-on');
 
-// serviceAddOn.addEventListener('change', () => {
+storageAddOn.addEventListener('change', () => {
 
-//     if (serviceAddOn.checked) {
-
-        
+    const yearlyStorage = document.getElementById('yearly-storage');
 
 
+    if (storageAddOn.checked) {
+
+        childTwo.classList.add('flex');
+        yearlyStorage.innerHTML = storage2.innerHTML;
+
+    } else {
+
+        childTwo.classList.remove('flex');
+        yearlyStorage.innerHTML = '+$0/m';
+
+    }
+
+})
 
 
-//     } else {
+const customAddOn = document.getElementById('custom-add-on');
+const childThree = document.getElementById('child-3');
+customAddOn.addEventListener('change', () => {
+
+    
+    const yearlyCustom = document.getElementById('yearly-custom');
+
+    if (customAddOn.checked) {
 
 
+        childThree.classList.add('flex');
+        yearlyCustom.innerHTML = yearlyCustom2.innerHTML;
 
-//     }
-
-// })
-
-// const customAddOn = document.getElementById('custom-add-on');
-// let addOnItem2 = document.createElement('div');
+    } else {
 
 
-// customAddOn.addEventListener('change', () => {
+        childThree.classList.remove('flex');
+        yearlyCustom.innerHTML = '+$0/m';
 
-//     if (customAddOn.checked) {
+    }
 
-
-//         addOnItem2.innerHTML = `<div id="child-2" class="finishing-child">
-
-//         <span class="left">Larger Storage</span>
-
-//         <span id="yearly-storage" class="price">+$2/mo</span>
-
-
-//       </div>`;
-
-//       containerTest.append(addOnItem2);
-
-
-//     } else {
-
-//         addOnItem2.remove();
-
-//     }
-
-// })
-
-// const storageAddOn = document.getElementById('storage-add-on');
-// let addOnItem3 = document.createElement('div');
-
-// storageAddOn.addEventListener('change', () => {
-
-//     if (storageAddOn.checked) {
-
-//         addOnItem3.innerHTML = `<div id="child-3" class="finishing-child">
-
-//         <span class="left">Customizable Profile</span>
-
-//         <span id="yearly-custom" class="price">+$2/mo</span>
-
-
-//       </div>`;
-
-//       containerTest.append(addOnItem3);
-
-//     } else {
-
-//         addOnItem3.remove();
-//     }
-
-// })
+})
 
 // checkbox active states //
 const addOnInput = document.querySelectorAll('.add-on-option');

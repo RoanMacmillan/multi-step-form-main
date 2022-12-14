@@ -379,7 +379,10 @@ form span {
     
 }
 
+.flex {
 
+    display: flex !important;
+}
 
 .finishing-child {
 
@@ -388,6 +391,7 @@ form span {
     justify-content: space-between;
     padding-left: 17px;
     padding-right: 17px;
+    
     
     
 }
@@ -416,7 +420,7 @@ form span {
 
     padding-bottom: 9px;
     padding-top: 9px;
-    display: flex;
+    display: none;
 }
 
 /* .addOns {
