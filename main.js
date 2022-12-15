@@ -5,7 +5,6 @@ let currentTab = 0;
 
 showTab(currentTab);
 
-
 function showTab(n) {
     // This function will display the specified tab of the form...
     var x = document.getElementsByClassName("tab");
@@ -31,14 +30,9 @@ function showTab(n) {
         document.getElementById('navigation').style.display = 'none';
     }
 
-
-  
-
-
     //... and run a function that will display the correct step indicator:
     highlightCurrentStep(n)
 }
-
 
 function nextPrev(n) {
     // This function will figure out which tab to display
@@ -53,7 +47,6 @@ function nextPrev(n) {
     clearErrors();
     showTab(currentTab);
 }
-
 
 
 document.getElementById('underline').addEventListener('click', () => {
@@ -78,26 +71,46 @@ function validateForm() {
     phoneInput = document.getElementById('phone');
     emailInput = document.getElementById('email');
 
-    if (nameInput.value !== '') {
+    if (nameInput.value === '' || !isNaN(nameInput.value)) {
 
         nameInput.classList.add('invalid');
         document.getElementById('nameError').innerHTML = 'This field is required'
 
         valid = false;
 
-    } if (emailInput.value !== '' || validateEmail(emailInput.value)) {
+    } else {
+
+        nameInput.classList.remove('invalid');
+        document.getElementById('nameError').innerHTML = ''
+
+    }
+    
+    
+    
+    if (emailInput.value === '' || !validateEmail(emailInput.value)) {
 
         emailInput.classList.add('invalid');
         document.getElementById('emailError').innerHTML = 'Not a valid email';
 
         valid = false;
 
-    } if (phoneInput.value !== '') {
+    } else {
+
+        emailInput.classList.remove('invalid');
+        document.getElementById('emailError').innerHTML = '';
+    }
+    
+    
+    if (phoneInput.value === '' || isNaN(phoneInput.value) || phoneInput.value.length < 10) {
 
         phoneInput.classList.add('invalid');
         document.getElementById('phoneError').innerHTML = 'Not a valid phone number'
 
         valid = false;
+    } else {
+
+        phoneInput.classList.remove('invalid');
+        document.getElementById('phoneError').innerHTML = ''
     }
 
     return valid;
@@ -119,7 +132,6 @@ const validateEmail = (email) => {
 function clearErrors() {
 
     const errors = document.querySelectorAll('.error');
-
     errors.forEach((error) => {
 
         error.innerHTML = '';
@@ -127,7 +139,6 @@ function clearErrors() {
     })
 
     const inputs = document.querySelectorAll('.info');
-
     inputs.forEach((input) => {
 
         input.classList.remove('invalid');
@@ -154,16 +165,12 @@ btn.forEach((btn) => {
 
     btn.addEventListener('click', () => {
 
-
         const planSummary = document.querySelector('.choice');
         const planOption = btn.children[1].childNodes[1].innerHTML;
-
         planSummary.innerHTML = planOption;
 
         const priceSummary = document.getElementById('price-choice');
-
         const priceOption = btn.children[1].childNodes[3].innerHTML;
-
         priceSummary.innerHTML = priceOption;
 
     })
@@ -209,7 +216,6 @@ const choice = document.querySelector('.choice');
 
 }
 
-
 const toggleBtn = document.getElementById('toggle-btn');
 const yearlyStorage = document.getElementById('yearly-storage');
 const yearlyCustom = document.getElementById('yearly-custom');
@@ -222,17 +228,39 @@ const online = document.getElementById('online-price');
 const storage2 = document.getElementById('storage2');
 const priceChoice = document.getElementById('price-choice');
 
-toggleBtn.addEventListener('click', () => {
 
-   
+// changes from monthly to yearly when clicking toggle //
+
+toggleBtn.addEventListener('click', () => {
 
     document.getElementById('yearlyText').classList.toggle('text');
     document.getElementById('monthlyText').classList.toggle('gray');
 
     if (toggleBtn.checked) {
         
+        toggleYearlyStates()
+        
+    } else {
 
-        arcade.innerHTML = '$90/yr';
+        toggleMonthlyStates();
+    }
+
+    fixError();
+
+})
+
+
+
+function toggleYearlyStates()  {
+
+document.querySelectorAll('.bonus').forEach((bonus) => {
+
+    bonus.classList.add('flex');
+})
+
+document.getElementById('total-text').innerHTML = 'Total (per year)'
+
+arcade.innerHTML = '$90/yr';
         advanced.innerHTML = '$120/yr'
         pro.innerHTML = '$150/yr';
         online.innerHTML = '+$10/yr';
@@ -267,11 +295,18 @@ toggleBtn.addEventListener('click', () => {
             yearlyCustom.innerHTML = '+$0/yr';
         }
 
+}
 
-    } else {
+function toggleMonthlyStates() {
+
+    document.querySelectorAll('.bonus').forEach((bonus) => {
+
+        bonus.classList.remove('flex');
+    })
+    document.getElementById('total-text').innerHTML = 'Total (per month)'
 
 
-        arcade.innerHTML = '$9/mo';
+    arcade.innerHTML = '$9/mo';
         advanced.innerHTML = '$12/mo'
         pro.innerHTML = '$15/mo';
         online.innerHTML = '+$1/mo';
@@ -306,11 +341,8 @@ toggleBtn.addEventListener('click', () => {
             yearlyCustom.innerHTML = '+$0/mo';
         }
 
-    }
+}
 
-    fixError();
-
-})
 
 const serviceAddOn = document.getElementById('service-add-on');
 const containerTest = document.getElementById('test-append');
@@ -345,7 +377,6 @@ storageAddOn.addEventListener('change', () => {
 
     const yearlyStorage = document.getElementById('yearly-storage');
 
-
     if (storageAddOn.checked) {
 
         childTwo.classList.add('flex');
@@ -360,28 +391,23 @@ storageAddOn.addEventListener('change', () => {
 
 })
 
-
 const customAddOn = document.getElementById('custom-add-on');
 const childThree = document.getElementById('child-3');
 customAddOn.addEventListener('change', () => {
 
-    
     const yearlyCustom = document.getElementById('yearly-custom');
 
     if (customAddOn.checked) {
-
 
         childThree.classList.add('flex');
         yearlyCustom.innerHTML = yearlyCustom2.innerHTML;
 
     } else {
 
-
         childThree.classList.remove('flex');
         yearlyCustom.innerHTML = '+$0/m';
 
     }
-
 })
 
 // checkbox active states //
@@ -402,17 +428,17 @@ const addOnArray = [...addOnChoice];
 function calcTotalCosts() {
 
     const planAmount = document.getElementById('price-choice');
-    const newPlan_Amount = parseInt(planAmount.innerText.replace("$", "").replace("/mo", "").replace("/yr", ""));
-    const storeAddOn_amounts = [];
+    const newPlanAmount = parseInt(planAmount.innerText.replace("$", "").replace("/mo", "").replace("/yr", ""));
+    const storeAddOnAmounts = [];
 
-    const addOn_amounts = document.querySelectorAll(".price");
-    addOn_amounts.forEach((amount) => {
-        const newAddOn_amount = parseInt(amount.innerText.replace("+$", "").replace("/mo", "").replace("/yr", ""));
-        storeAddOn_amounts.push(newAddOn_amount)
+    const addOnAmounts = document.querySelectorAll(".price");
+    addOnAmounts.forEach((amount) => {
+        const newAddOnAmount = parseInt(amount.innerText.replace("+$", "").replace("/mo", "").replace("/yr", ""));
+        storeAddOnAmounts.push(newAddOnAmount)
     });
 
-    const newStoredAddOn_amounts = storeAddOn_amounts.reduce((a, b) => a + b, 0);
-    const total = newPlan_Amount + newStoredAddOn_amounts;
+    const newStoredAddOnAmounts = storeAddOnAmounts.reduce((a, b) => a + b, 0);
+    const total = newPlanAmount + newStoredAddOnAmounts;
     const container = document.getElementById('total-amount');
     container.innerText = `+$${total}`;
 

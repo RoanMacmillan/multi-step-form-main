@@ -19,7 +19,6 @@ main {
     flex-direction: column;
     margin: 0 auto;
     gap: 25px;
-
 }
 
 
@@ -73,14 +72,12 @@ p {
     flex-direction: column;
     padding-left: 17px;
     padding-right: 17px;
-
     margin: 0 auto;
 
 }
 
 .top-tab {
     max-width: 340px;
-
     border-radius: 7px;
     margin-top: -98px;
     background-color: white;
@@ -262,6 +259,7 @@ form span {
     flex-direction: column;
     gap: 15px;
     margin-top: 20px;
+    
 
 }
 
@@ -351,6 +349,13 @@ form span {
 
 }
 
+.bonus {
+
+    color: hsl(213, 96%, 23%);
+    font-size: .8em;
+    font-weight: 500;
+    display: none;
+}
 
 .finishing-container {
 
@@ -375,17 +380,13 @@ form span {
     
 }
 
-#border {
-
-    padding-top: 17px;
-    padding-bottom: 17px; 
-    
-}
 
 
 #border {
 
     border-bottom: 1px solid hsl(229, 24%, 87%);
+    padding-top: 17px;
+    padding-bottom: 17px; 
     
 }
 
@@ -580,5 +581,225 @@ input:checked+.slider:before {
     gap: 10px;
     margin-top: 25px;
     margin-bottom: 15px;
+
+}
+
+
+.step-info {
+
+    display: none;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+
+
+main {
+
+    flex-direction: row;
+    min-height: unset;
+    width: 1000px;
+    height: 568px;
+    background-color: white !important;
+    padding: 15px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+body {
+
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+.sidebar-container {
+
+    background-image: url('./assets/images/bg-sidebar-desktop.svg');
+    min-width: 249px;
+    background-size: unset;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-left: 30px;
+    padding-top: 40px;
+    gap: 25px;
+    
+}
+
+.step {
+    margin: 0;
+
+}
+
+h1 {
+
+    font-size: 2em;
+    margin: 0 !important;
+}
+
+.top-tab {
+
+    max-width: unset;
+    margin: 0;
+    box-shadow: none;
+    border-radius: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: unset;
+    
+    
+
+}
+
+.info {
+
+    height: 55px;
+    margin-top: 7px;
+    margin-bottom: 20px;
+}
+
+
+
+#underline:hover {
+
+    color: hsl(243, 100%, 62%);
+
+}
+
+#first label {
+
+    font-weight: 500;
+}
+
+.tab {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    padding: 40px 100px 0 100px;
+    
+}
+
+
+#second .top-tab {
+
+}
+
+.billing-option-container {
+
+    
+    flex-direction: row;
+}
+
+.billing-option {
+
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.add-on-container {
+
+    height: 77px;
+}
+
+.add-on-container:hover {
+
+    border: 1px solid hsl(243, 100%, 62%);
+}
+
+.billing-icon {
+
+    margin-bottom: 25px;
+}
+
+.top-tab p {
+
+    margin-bottom: 27px;
+    font-size: 1.1em;
+    
+}
+
+.step-container {
+
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.step-container span {
+
+    text-transform: uppercase;
+    line-height: 20px;
+}
+
+.step-container span:first-child {
+
+    color: hsl(231, 11%, 63%);
+    font-size: .9em;
+}
+
+.step-container span:last-child {
+
+    color: hsl(231, 100%, 99%);
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.step-info {
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.bottom-tab {
+
+    display: flex;
+    background-color: white;
+    box-shadow: none;
+    
+    position: absolute;    
+    bottom: 0;
+    right: 0;
+    width: 497px;
+    margin-bottom: 15px;
+    
+    margin-right: 114px;
+    padding: 0;
+    
+    
+}
+
+.bottom-tab button:first-child {
+
+    text-align: left;
+    
+    padding: 0 !important;
+}
+
+#next {
+
+    width: 120px !important;
+}
+
+#next:hover {
+
+    filter:opacity(80%)
+}
+
+#fifth {
+
+   align-items: center;
+   margin-top: 50px;
+}
+
 
 }
