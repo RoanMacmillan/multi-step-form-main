@@ -24,6 +24,7 @@ main {
 
 
 
+
 input {
 
     box-sizing: border-box;
@@ -88,7 +89,7 @@ p {
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 20px;
-
+    
 }
 
 
@@ -195,12 +196,6 @@ p {
     outline: 1px solid red;
 }
 
-/* form span.invalid {
-
-    
-    display: block;
-} */
-
 
 form span {
     
@@ -211,28 +206,8 @@ form span {
 
 
 
-/* 
-#first {
 
-    display: none;
-}
-
-#second {
-
-    display: none;
-}
-
-#third {
-
-    display: none;
-}
-
-#fourth {
-
-    display: none;
-} */
-
-#second button {
+.billing-option {
 
 
     border-radius: 7px;
@@ -262,7 +237,6 @@ form span {
 
 }
 
-.billing-option img {}
 
 .span-container {
 
@@ -273,11 +247,7 @@ form span {
 }
 
 
-#second button:focus {
 
-    border: 1px solid hsl(243, 100%, 62%);
-    background-color: hsl(231, 100%, 99%);
-}
 
 
 .testt {
@@ -323,6 +293,16 @@ form span {
     background-color: hsl(231, 100%, 99%);
 
 }
+
+
+
+
+.activee, .billing-option:hover {
+    border: 1px solid hsl(243, 100%, 62%);
+    background-color: hsl(231, 100%, 99%);
+  }
+
+  
 
 .add-on-option {
 
@@ -393,13 +373,12 @@ form span {
     padding-right: 17px;
     
     
-    
 }
 
-.finishing-child:first-child {
+#border {
 
     padding-top: 17px;
-    padding-bottom: 17px;
+    padding-bottom: 17px; 
     
 }
 
@@ -407,27 +386,21 @@ form span {
 #border {
 
     border-bottom: 1px solid hsl(229, 24%, 87%);
-
+    
 }
 
-.add-on-mask {
 
-    padding-top: 9px;
-    padding-bottom: 9px;
-}
 
 #child-1, #child-2, #child-3 {
 
-    padding-bottom: 9px;
-    padding-top: 9px;
     display: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
 }
 
-/* .addOns {
 
-    display: flex !important;
-    
-} */
+
 
 #finishing-span-container {
 

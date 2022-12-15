@@ -30,6 +30,11 @@ function showTab(n) {
 
         document.getElementById('navigation').style.display = 'none';
     }
+
+
+  
+
+
     //... and run a function that will display the correct step indicator:
     highlightCurrentStep(n)
 }
@@ -40,6 +45,7 @@ function nextPrev(n) {
     var x = document.getElementsByClassName("tab");
     // Exit the function if any field in the current tab is invalid:
     if (n == 1 && !validateForm()) return false;
+
     // Hide the current tab:
     x[currentTab].style.display = "none";
     // Increase or decrease the current tab by 1:
@@ -47,6 +53,7 @@ function nextPrev(n) {
     clearErrors();
     showTab(currentTab);
 }
+
 
 
 document.getElementById('underline').addEventListener('click', () => {
@@ -97,6 +104,7 @@ function validateForm() {
 
 }
 
+
 // email regex function
 const validateEmail = (email) => {
     return String(email)
@@ -138,13 +146,14 @@ function highlightCurrentStep(n) {
     x[n].className += " active";
 }
 
+// add plan option and plan price to summary // 
 
+const btn = document.querySelectorAll('.billing-option');
 
-const planBtn = document.querySelectorAll('.billing-option');
-
-planBtn.forEach((btn) => {
+btn.forEach((btn) => {
 
     btn.addEventListener('click', () => {
+
 
         const planSummary = document.querySelector('.choice');
         const planOption = btn.children[1].childNodes[1].innerHTML;
@@ -161,6 +170,19 @@ planBtn.forEach((btn) => {
 
 })
 
+// change active classes on plan buttons
+
+for (var i = 0; i < btn.length; i++) {
+    btn[i].addEventListener("click", function() {
+
+var current = document.getElementsByClassName("activee");
+  current[0].className = current[0].className.replace(" activee", "");
+  this.className += " activee";
+
+}
+
+);
+}
 
 // fixes summary ammounts if they are active when user toggles
 
@@ -245,7 +267,6 @@ toggleBtn.addEventListener('click', () => {
             yearlyCustom.innerHTML = '+$0/yr';
         }
 
-                // summary add ons //
 
     } else {
 
@@ -284,8 +305,6 @@ toggleBtn.addEventListener('click', () => {
 
             yearlyCustom.innerHTML = '+$0/mo';
         }
-
-        // summary add ons //
 
     }
 
@@ -398,3 +417,5 @@ function calcTotalCosts() {
     container.innerText = `+$${total}`;
 
 }
+
+
